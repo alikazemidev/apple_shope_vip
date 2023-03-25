@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app_vip/constants/my_color.dart';
+import 'package:shop_app_vip/widgets/banner_slider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 void main() {
@@ -25,8 +27,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final PageController _controller =
-      PageController(initialPage: 1, viewportFraction: .8);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,25 +36,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 200,
-            child: PageView.builder(
-              controller: _controller,
-              itemCount: 3,
-              itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.all(10),
-                  color: Colors.red,
-                  height: 200,
-                );
-              },
-            ),
-          ),
-           SmoothPageIndicator(
-            effect:const ExpandingDotsEffect(),
-             controller: _controller,
-             count: 3,
-           ),
+          BannerSlider()
         ],
       ),
     );
