@@ -1,5 +1,3 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -7,6 +5,7 @@ import '../constants/my_color.dart';
 
 class BannerSlider extends StatelessWidget {
   BannerSlider({super.key});
+
   final PageController _controller = PageController(
     initialPage: 1,
     viewportFraction: .8,
