@@ -38,7 +38,7 @@ class BannerSlider extends StatelessWidget {
               dotHeight: 10,
               dotWidth: 10,
               expansionFactor: 5,
-              activeDotColor: MyColors.blueIndictor,
+              activeDotColor: MyColors.blueIndicator,
             ),
             controller: _controller,
             count: 3,
