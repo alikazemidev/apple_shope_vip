@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shop_app_vip/constants/my_color.dart';
 import 'package:shop_app_vip/gen/assets.gen.dart';
 import 'package:shop_app_vip/widgets/banner_slider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:shop_app_vip/widgets/product_item.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,151 +32,117 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.backgroundScreenColor,
-      appBar: AppBar(
-        backgroundColor: Colors.teal.shade900,
-      ),
+      // appBar: AppBar(
+      //   backgroundColor: Colors.teal.shade900,
+      // ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            BannerSlider(),
-            const Padding(
-              padding: EdgeInsets.all(15.0),
-              child: Text(
-                'همه دسته بندی ها',
-                style: TextStyle(
-                  fontFamily: 'SB',
-                  fontSize: 18,
+        child: CustomScrollView(
+          physics: const BouncingScrollPhysics().parent,
+          slivers: [
+            SliverToBoxAdapter(
+              child: BannerSlider(),
+            ),
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(top: 10, right: 44, bottom: 10),
+                child: Text(
+                  'همه دسته بندی ها',
+                  textAlign: TextAlign.right,
+                  style: TextStyle(
+                    fontFamily: 'SB',
+                    fontSize: 18,
+                  ),
                 ),
               ),
             ),
-            SizedBox(
-              height: 120,
-              child: ListView.builder(
-                itemCount: 10,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return const CategoryHorizontalItemList();
-                },
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 105,
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(right: 34),
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return const CategoryHorizontalItemList();
+                  },
+                ),
               ),
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 20),
-              height: 216,
-              width: 160,
-              decoration: BoxDecoration(
-                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
-              child: Column(
-                children: [
-                  const SizedBox(height: 10),
-                  Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Expanded(child: Container()),
-                      Assets.images.iphone.image(),
-                      Positioned(
-                        right: 10,
-                        top: 0,
-                        child: Assets.images.activeFavProduct.image(),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 44, vertical: 10),
+                child: Row(
+                  children: [
+                    Assets.images.iconLeftCategroy.image(),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'مشاهده همه',
+                      style: TextStyle(fontFamily: 'SB'),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      'پر فروش ترین ها',
+                      style: TextStyle(
+                        fontFamily: 'SB',
+                        color: MyColors.greyColor,
                       ),
-                      Positioned(
-                        left: 10,
-                        bottom: 0,
-                        child: Container(
-                          width: 35,
-                          height: 18,
-                          decoration: BoxDecoration(
-                            color: MyColors.redColor,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: const Center(
-                            child: Text(
-                              '٪۳',
-                              style: TextStyle(
-                                fontFamily: 'SB',
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(right: 34),
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return const ProductItem();
+                  },
+                ),
+              ),
+            ),
+            const SliverToBoxAdapter(
+              child: SizedBox(height: 20),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 44, vertical: 10),
+                child: Row(
+                  children: [
+                    Assets.images.iconLeftCategroy.image(),
+                    const SizedBox(width: 10),
+                    const Text(
+                      'مشاهده همه',
+                      style: TextStyle(fontFamily: 'SB'),
+                    ),
+                    const Spacer(),
+                    const Text(
+                      'پر بازدید ترین ها',
+                      style: TextStyle(
+                        fontFamily: 'SB',
+                        color: MyColors.greyColor,
                       ),
-                    ],
-                  ),
-                  const Spacer(),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      const Padding(
-                        padding:  EdgeInsets.only(right: 5,bottom: 10),
-                        child:  Text(
-                          'آیفون ۱۳ پرو مکس',
-                          style: TextStyle(
-                            fontFamily: 'SM',
-                            fontSize: 14,
-                          ),
-                        ),
-                      ),
-
-                      Container(
-                        height: 53,
-                        decoration: const BoxDecoration(
-                          color: MyColors.blueColor,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(15),
-                            bottomRight: Radius.circular(15),
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: MyColors.blueColor,
-                              blurRadius: 25,
-                              offset: Offset(0, 15),
-                              spreadRadius: -12,
-                            ),
-                          ],
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Text(
-                              'تومان',
-                              style: TextStyle(
-                                fontFamily: 'SM',
-                                fontSize: 12,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const [
-                                Text(
-                                  '۱۱,۴۸۰,۰۰۰',
-                                  style: TextStyle(
-                                    decoration: TextDecoration.lineThrough,
-                                    fontFamily: 'SM',
-                                    fontSize: 12,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Text(
-                                  '۱۱,۱۲۰,۰۰۰',
-                                  style: TextStyle(
-                                    fontFamily: 'SM',
-                                    fontSize: 16,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Assets.images.iconRightArrowCricle
-                                .image(width: 25, height: 25),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  padding: const EdgeInsets.only(right: 34),
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return const ProductItem();
+                  },
+                ),
               ),
             ),
           ],
@@ -194,7 +160,7 @@ class CategoryHorizontalItemList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(15),
+      margin: const EdgeInsets.all(10),
       child: Column(
         children: [
           Container(
