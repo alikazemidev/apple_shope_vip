@@ -26,6 +26,7 @@ class BannerSlider extends StatelessWidget {
                 margin: const EdgeInsets.all(10),
                 color: Colors.red,
                 height: 200,
+                child: Image.asset('assets/images/iphone.png'),
               );
             },
           ),
