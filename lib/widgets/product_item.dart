@@ -15,14 +15,16 @@ class ProductItem extends StatelessWidget {
       height: 216,
       width: 160,
       decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(15)),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+      ),
       child: Column(
         children: [
           const SizedBox(height: 10),
           Stack(
             alignment: AlignmentDirectional.center,
             children: [
-              Expanded(child: Container()),
+             Container(),
               Assets.images.iphone.image(),
               Positioned(
                 right: 10,
@@ -58,16 +60,16 @@ class ProductItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               const Padding(
-                padding:  EdgeInsets.only(right: 10,bottom: 10),
-                child:  Text(
+                padding: EdgeInsets.only(right: 10, bottom: 10),
+                child: Text(
                   'آیفون ۱۳ پرو مکس',
+
                   style: TextStyle(
                     fontFamily: 'SM',
                     fontSize: 14,
                   ),
                 ),
               ),
-
               Container(
                 height: 53,
                 decoration: const BoxDecoration(
@@ -96,10 +98,10 @@ class ProductItem extends StatelessWidget {
                         color: Colors.white,
                       ),
                     ),
-                    Column(
+                    const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
+                      children: [
                         Text(
                           '۱۱,۴۸۰,۰۰۰',
                           style: TextStyle(

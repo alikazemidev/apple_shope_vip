@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
       // ),
       body: SafeArea(
         child: CustomScrollView(
-          physics: const BouncingScrollPhysics().parent,
+          physics: const BouncingScrollPhysics(),
           slivers: [
             SliverToBoxAdapter(
               child: BannerSlider(),
